@@ -1,4 +1,5 @@
 import graphics.Asset;
+import input.KeyBoard;
 import state.GameState;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class Window extends JFrame implements Runnable {
     private int AVERAGEFPS = FPS;
 
     private GameState gameState;
+    private KeyBoard keyBoard;
 
     public Window(){
         setTitle("Space Ship Game");
@@ -33,6 +35,8 @@ public class Window extends JFrame implements Runnable {
         setVisible(true);//hacer visible la ventana
 
         canvas = new Canvas();
+        keyBoard= new KeyBoard();
+
         canvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         canvas.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         canvas.setMinimumSize(new Dimension(WIDTH, HEIGHT));
@@ -40,6 +44,7 @@ public class Window extends JFrame implements Runnable {
 
 
         add(canvas);//agregamos el canvas a la ventana
+        canvas.addKeyListener(keyBoard);
 
     }
 
@@ -52,6 +57,7 @@ public class Window extends JFrame implements Runnable {
 
 
     private void update(){
+        keyBoard.update();
         gameState.update();
     }
 
