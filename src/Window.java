@@ -8,7 +8,7 @@ import java.awt.image.BufferStrategy;
 import java.sql.SQLOutput;
 
 public class Window extends JFrame implements Runnable {
-    public static final int  WIDTH = 800,HEIGHT=600;
+    public static final int  WIDTH = 1000,HEIGHT=600;
     private Canvas canvas;
     private Thread thread; //es un hilo interno no entendi bien para que funciona
     private  boolean running = false;
@@ -32,7 +32,7 @@ public class Window extends JFrame implements Runnable {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//con esto permitimos que la ventana se pueda cerrar cuando se haga clik en la X
         setResizable(false);//para que la ventana no se pueda redimencionar
         setLocationRelativeTo(null);//permite que la ventana se desplieje en el centro de la pantalla
-        setVisible(true);//hacer visible la ventana
+
 
         canvas = new Canvas();
         keyBoard= new KeyBoard();
@@ -45,6 +45,7 @@ public class Window extends JFrame implements Runnable {
 
         add(canvas);//agregamos el canvas a la ventana
         canvas.addKeyListener(keyBoard);
+        setVisible(true);//hacer visible la ventana
 
     }
 
