@@ -1,4 +1,4 @@
-import graphics.Asset;
+import graphics.Aseets;
 import input.KeyBoard;
 import state.GameState;
 
@@ -87,7 +87,8 @@ public class Window extends JFrame implements Runnable {
 
     private void init(){
 
-        Asset.init();
+
+        Aseets.init();
         gameState = new GameState();
     }
 

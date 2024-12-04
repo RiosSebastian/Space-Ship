@@ -1,6 +1,6 @@
 package gameobject;
 
-import graphics.Asset;
+import graphics.Aseets;
 import input.KeyBoard;
 import math.Vector2D;
 import state.GameState;
@@ -36,7 +36,7 @@ public class Player extends MovingObject{
 
         if (KeyBoard.SHOOT && !fireRate.isRunning() ){
             gameState.getMovingObjects().add(0, new Laser(getCenter().add(heading.scale(width)),
-                    heading,10,angle,Asset.blueLaser, gameState));
+                    heading,10,angle, Aseets.blueLaser, gameState));
 
             fireRate.run(Constants.FIRERATE);
         }
@@ -61,13 +61,13 @@ public class Player extends MovingObject{
 
         position = position.add(velocity);
 
-        if(position.getX() > 800)
+        if(position.getX() > 1000)
             position.setX(0);
         if(position.getY() > 600)
             position.setY(0);
 
         if(position.getX() < 0)
-            position.setX(800);
+            position.setX(1000);
         if(position.getY() < 0)
             position.setY(600);
 
@@ -87,13 +87,13 @@ public class Player extends MovingObject{
         at2.rotate(angle, width/2-5,-10);
 
         if (accelerating){
-            g2d.drawImage(Asset.speed,at1,null);
-            g2d.drawImage(Asset.speed,at2,null);
+            g2d.drawImage(Aseets.speed,at1,null);
+            g2d.drawImage(Aseets.speed,at2,null);
         }
 
         at = AffineTransform.getTranslateInstance(position.getX(),position.getY());
         at.rotate(angle, width/2,height/2);
-        g2d.drawImage(Asset.player,at, null);
+        g2d.drawImage(texture,at, null);
     }
 
     public Vector2D getCenter(){
